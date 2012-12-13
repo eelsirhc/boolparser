@@ -9,6 +9,7 @@ NEWS = open(os.path.join(here, 'NEWS.txt')).read()
 version = '0.1'
 
 install_requires = [
+    "pyparsing"
     # List your project dependencies here.
     # For more details, see:
     # http://packages.python.org/distribute/setuptools.html#declaring-dependencies
@@ -33,6 +34,7 @@ setup(name='boolparser',
     install_requires=install_requires,
     entry_points={
         'console_scripts':
-            ['boolparser=boolparser:main']
+            ['boolparser_test=boolparser:test_parser',
+            ]
     }
 )
