@@ -1,23 +1,10 @@
-This file requires editing
+boolparser
 ==========================
 
-Note to the author: Please add something informative to this README *before*
-releasing your software, as `a little documentation goes a long way`_.  Both
-README.rst (this file) and NEWS.txt (release notes) will be included in your
-package metadata which gets displayed in the PyPI page for your project.
+This package defines a simple boolean parser using PyParsing that allows user defined variables and floating point numbers to be used in a nested boolean comparison. For example, if the variables *a*,*b*, and *c* are defined then the following string can be parsed
 
-You can take a look at the README.txt of other projects, such as repoze.bfg
-(http://bfg.repoze.org/trac/browser/trunk/README.txt) for some ideas.
+    (a==1 & b<2) | c>4
 
-.. _`a little documentation goes a long way`: http://www.martinaspeli.net/articles/a-little-documentation-goes-a-long-way
+The resolution of *a*, *b*, and *c* is left up to the user by inheriting from the class `EvaluateVariable` class and overriding the `eval` function. This allows the variables to be references to (say) data stored in a file.
 
-Credits
--------
-
-- `Distribute`_
-- `Buildout`_
-- `modern-package-template`_
-
-.. _Buildout: http://www.buildout.org/
-.. _Distribute: http://pypi.python.org/pypi/distribute
-.. _`modern-package-template`: http://pypi.python.org/pypi/modern-package-template
+BSD licensed.
