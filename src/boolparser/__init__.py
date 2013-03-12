@@ -1,4 +1,4 @@
-# Example package with a console entry point
+
 from boolparser.core import *
 
 def test_parser():
