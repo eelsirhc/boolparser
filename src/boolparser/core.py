@@ -63,7 +63,6 @@ class EvaluateComparison(object):
         val1 = self.value[0].eval()
         for op,val in opPair(self.value[1:]):
             fn = EvaluateComparison.operators[op][1]
-            print val1
             val2 = val.eval()
             val1 =  fn(val1,val2)
         return val1

@@ -26,12 +26,13 @@ a==1 & ! b
             return b.get(self.value,False)
         
     bp = BoolParser(ev_dict)
-    print b
     if len(sys.argv)==1:
         for line in test_string.split("\n"):
-            print line, bp.parse(line)
+            if line:
+                print line, bp.parse(line)
     else:
         print "Parsing {0}".format(sys.argv[1])
         for line in open(sys.argv[1]):
-            print line
-            bp.parseString(line)
+            if line:
+                print line
+                bp.parseString(line)
