@@ -13,3 +13,10 @@ News
 
 * Initial import of boolean parser into git.
 
+0.2
+---
+
+*Release date: Mar 14, 2013*
+
+* Fixing a few comments
+

@@ -6,10 +6,10 @@ README = open(os.path.join(here, 'README.rst')).read()
 NEWS = open(os.path.join(here, 'NEWS.txt')).read()
 
 
-version = '0.1'
+version = '0.2.2'
 
 install_requires = [
-    "pyparsing"
+    "pyparsing <2"
     # List your project dependencies here.
     # For more details, see:
     # http://packages.python.org/distribute/setuptools.html#declaring-dependencies
@@ -25,8 +25,8 @@ setup(name='boolparser',
     ],
     keywords='Boolean, Parsing',
     author='Christopher Lee',
-    author_email='lee@ashimaresearch.com',
-    url='',
+    author_email='lee@foldmountain.com',
+    url='http://github.com/eelsirhc/boolparser',
     license='BSD',
     packages=find_packages('src'),
     package_dir = {'': 'src'},include_package_data=True,
