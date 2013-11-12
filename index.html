@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Boolparser by eelsirhc</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Boolparser</h1>
+        <p>Simple Python module to parse (a==b)&amp;(c&gt;1)|(d==0)&amp;((e&lt;=1)&amp;!f)</p>
+
+        <p class="view"><a href="https://github.com/eelsirhc/boolparser">View the Project on GitHub <small>eelsirhc/boolparser</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/eelsirhc/boolparser/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/eelsirhc/boolparser/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/eelsirhc/boolparser">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>boolparser</p>
+
+<p>This package defines a simple boolean parser using PyParsing that allows user defined variables and floating point numbers to be used in a nested boolean comparison. For example, if the variables <code>a</code>,<code>b</code>, and <code>c</code> are defined then the following string can be parsed</p>
+
+<pre><code>(a==1 &amp; b&lt;2) | c&gt;4
+</code></pre>
+
+<p>The resolution of <code>a</code>, <code>b</code>, and <code>c</code> is left up to the user by inheriting from the class <code>EvaluateVariable</code> class and overriding the <code>eval</code> function. This allows the variables to be references to (say) data stored in a file.</p>
+
+<p>BSD licensed.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/eelsirhc">eelsirhc</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
