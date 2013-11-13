@@ -30,14 +30,59 @@
       <section>
         <p>boolparser</p>
 
-<p>This package defines a simple boolean parser using PyParsing that allows user defined variables and floating point numbers to be used in a nested boolean comparison. For example, if the variables <code>a</code>,<code>b</code>, and <code>c</code> are defined then the following string can be parsed</p>
+<h1>Bool Parser</h1>
 
-<pre><code>(a==1 &amp; b&lt;2) | c&gt;4
-</code></pre>
+<p>The boolparser library defines a simple boolean parser that supports logical operators and parentheses (and not much else) thanks to the <a href="http://pyparsing.wikispaces.com/">PyParsing</a> library. The library allows you write a simple parser that can parse string from “a>0″ to “(a==b)&(c>1)|(d==0)&((e<=1)&!f)” once you’ve defined what to do with the named variables.</p>
 
-<p>The resolution of <code>a</code>, <code>b</code>, and <code>c</code> is left up to the user by inheriting from the class <code>EvaluateVariable</code> class and overriding the <code>eval</code> function. This allows the variables to be references to (say) data stored in a file.</p>
+<p>The manipulation of user variables is defined by the `EvaluateVariable` class through an `eval` function interface. Overriding this class makes it possible to customize the behavior of the parser (e.g. to look/store the variable in a dictionary or file).</p>
 
-<p>BSD licensed.</p>
+<h2>Example</h2>
+<p>To setup the parser you need to define an object inherited from EvaluateVariable that provides (at least) the eval function to convert an undefined variable name into data, and sometimes define an object that describes the behavior of logical comparisons (such as <=, <, ==, >, >=, !) for that variable.</p>
+
+<p>For example, the parser can filter a NetCDF file based on variables in the file without ‘hard-coding’ the variables in the code. In this case, we need a class that stores NetCDF file and, when given a variable name, returns the variable data. The comparisons are typical value comparisons that the NumPy library already handles so we shouldn’t need the ‘comparator object’
+
+<pre><code>
+    import netCDF4
+    from boolparser.core import BoolParser, EvaluateVariable
+    import sys
+
+    def define_class(nc):
+        class ev_nc(EvaluateVariable):
+            def eval(self):
+                if self.value in nc.variables:
+                    return nc.variables[self.value][:]
+                elif self.value in nc.dimensions:
+                    return nc.dimensions[self.value][:]
+                else:
+                    raise NameError("Not a variable: {0}".format(self.value))
+                    return self.value
+        return ev_nc
+
+    nc = netCDF4.Dataset("mcs.year1.nc")
+    nceval = define_class(nc)
+    bp   = BoolParser(nceval)
+
+    line = """(Profile_lat>-6)&(Profile_lat<-5)&(Profile_lon>137)&(Profile_lon<138)"""
+    #equivalent to np.where((nc.variables["Profile_lat"][:]>-6)&                                                                                                                                         
+    #                   (nc.variables["Profile_lat"][:]>-5)&                                                                                                                                         
+    #                   (nc.variables["Profile_lon"][:]>137)&                                                                                                                                        
+    #                   (nc.variables["Profile_lon"][:]<138))                                                                                                                                        
+
+    res = bp.parse(line)
+    if res.any():
+        print nc.variables["T_surf"][res]
+    else:
+        print "no data"
+</code>
+</pre>
+
+<h2>License</h2>
+(BSD 2 clause)
+<p>Copyright (c) 2012-, Christopher Lee All rights reserved.</p>
+
+<p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. * Neither the name of the nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</p>
+
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL CHRISTOPHER LEE BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/eelsirhc">eelsirhc</a></p>
