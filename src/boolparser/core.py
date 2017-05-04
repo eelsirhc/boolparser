@@ -40,7 +40,7 @@ def opPair(tokenlist):
     it = iter(tokenlist)
     while 1:
         try:
-            yield(it.next(), it.next())
+            yield(next(it), next(it))
         except StopIteration:
             break
 
@@ -161,7 +161,7 @@ class BoolParser(object):
 
     def parseString(self,line):
         if len(line): 
-            print self.boolExpression.parseString(line)[0]
+            print(self.boolExpression.parseString(line)[0])
 
     def parse(self,line):
         if len(line):

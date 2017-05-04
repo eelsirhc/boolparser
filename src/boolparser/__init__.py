@@ -26,13 +26,18 @@ a==1 & ! b
             return b.get(self.value,False)
         
     bp = BoolParser(ev_dict)
+    if len(sys.argv)>=1:
+        if sys.argv[1]=="--help":
+            print("This is just a dumb test program")
+        sys.exit(0)
+        
     if len(sys.argv)==1:
         for line in test_string.split("\n"):
             if line:
-                print line, bp.parse(line)
+                print(line, bp.parse(line))
     else:
-        print "Parsing {0}".format(sys.argv[1])
+        print("Parsing {0}".format(sys.argv[1]))
         for line in open(sys.argv[1]):
             if line:
-                print line
+                print(line)
                 bp.parseString(line)
