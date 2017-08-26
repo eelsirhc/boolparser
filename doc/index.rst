@@ -23,9 +23,3 @@ The resolution of `a`, `b`, and `c` is left up to the user by inheriting from th
    license
    
    
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

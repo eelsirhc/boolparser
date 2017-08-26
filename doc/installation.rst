@@ -45,7 +45,7 @@ The latest version of `boolparser` should be installable from Anaconda using
 
    conda install boolparser
    
-You can get the package from a few channels `eelsirhc`_, `auto`_, and `pypi <https://anaconda.org/pypi/boolparser>`__, either by adding a ``-c CHANNEL`` to the conda command or adding the channel to your configuration (`help`_).
+You can get the package from a few channels `chrislee`_, `auto`_, and `pypi <https://anaconda.org/pypi/boolparser>`__, either by adding a ``-c CHANNEL`` to the conda command or adding the channel to your configuration (`help`_).
 
 .. _PyParsing: http://pyparsing.wikispaces.com/
 .. _Github: https://github.com/eelsirhc/boolparser
