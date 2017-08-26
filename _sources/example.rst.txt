@@ -7,7 +7,7 @@ A trivial example
 ==================
 
 The simplest example is to use the code to compare dictionary elements with numbers.
-First define the dictionary (this would be done dynamically in reality)
+First define the dictionary:
 
 .. code-block:: python
   
@@ -43,7 +43,7 @@ Clearly, this example is convoluted. If your dictionary is statically defined pr
 A more useful example (?)
 ==========================
 
-boolparser was designed to allow command line filtering of NetCDF data (e.g. "Longitude>90&Latitude>45..."). The example below uses it to filter the `Iris <https://en.wikipedia.org/wiki/Iris_flower_data_set>`_ dataset in using the Python Pandas library.
+boolparser was designed to allow command line filtering of NetCDF data (e.g. "Longitude>90&Latitude>45..."). The example below uses it to filter the `Iris <https://en.wikipedia.org/wiki/Iris_flower_data_set>`_ dataset using the Python Pandas library.
 
 .. code-block:: python
 
