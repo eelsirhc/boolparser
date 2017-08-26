@@ -50,7 +50,7 @@ You can get the package from a few channels `chrislee`_, `auto`_, and `pypi <htt
 .. _PyParsing: http://pyparsing.wikispaces.com/
 .. _Github: https://github.com/eelsirhc/boolparser
 .. _PyPi: https://pypi.org/project/boolparser/
-.. _eelsirhc: https://anaconda.org/chrislee/boolparser
+.. _chrislee: https://anaconda.org/chrislee/boolparser
 .. _auto: https://anaconda.org/auto/boolparser
 .. _condapypi: https://anaconda.org/pypi/boolparser
 .. _help: https://conda.io/docs/user-guide/tasks/manage-channels.html
