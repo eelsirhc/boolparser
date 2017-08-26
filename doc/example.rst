@@ -7,7 +7,7 @@ A trivial example
 ==================
 
 The simplest example is to use the code to compare dictionary elements with numbers.
-First define the dictionary (this would be done dynamically in reality)
+First define the dictionary:
 
 .. code-block:: python
   
