@@ -3,10 +3,9 @@ import sys, os
 
 here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, 'README.rst')).read()
-NEWS = open(os.path.join(here, 'NEWS.txt')).read()
 
 
-version = '0.2.3'
+version = '0.3.1'
 
 install_requires = [
     "pyparsing"
@@ -19,7 +18,7 @@ install_requires = [
 setup(name='boolparser',
     version=version,
     description="Boolean Parser",
-    long_description=README + '\n\n' + NEWS,
+    long_description=README + '\n\n',
     classifiers=[
       # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
     ],
@@ -32,9 +31,4 @@ setup(name='boolparser',
     package_dir = {'': 'src'},include_package_data=True,
     zip_safe=False,
     install_requires=install_requires,
-    entry_points={
-        'console_scripts':
-            ['boolparser_test=boolparser:test_parser',
-            ]
-    }
 )
